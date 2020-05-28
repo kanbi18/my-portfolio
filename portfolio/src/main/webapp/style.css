@@ -1,39 +1,38 @@
+html{
+  background: url("../images/yes.jpg") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+}
 
 #myHeader {
   color: blueviolet;
-  background-image: "/images/theone.jpeg";
   background-size: cover;
 }
  
 #myName{
   float: left;
-  font: 25px Helvetica black;
+  font: 50px Helvetica black;
 }
  
 #welcome::before{
   content: "Hello!"; 
   float: right;
-  font-size: 20px;
+  font-size: 40px;
   animation: languages 4s infinite;
 }
  
 @keyframes languages{
-  0% {font-size: 20px; opacity: 1;}
-  10% {font-size: 20px; opacity: 0; content: "Hola!";}
-  20% {font-size: 20px; opacity: 1;}
-  30% {font-size: 20px; opacity: 0; content: "";}
-  40% {font-size: 20px; opacity: 1;}
-  50% {font-size: 20px; opacity: 0; content: "Hallo!";}
-  60% {font-size: 20px; opacity: 1;}
-  70% {font-size: 20px; opacity: 0; content: "";}
-  80% {font-size: 20px; opacity: 1;}
-  90% {font-size: 20px; opacity: 0; content: "你好 !";}
-  100% {font-size: 20px; opacity: 1;}
+  0% {font-size: 20px; opacity: 0;}
+  20% {font-size: 20px; opacity: 1; content: "Hola!";}
+  40% {font-size: 20px; opacity: 0;}
+  60% {font-size: 20px; opacity: 1; content: "Hallo!";}
+  70% {font-size: 20px; opacity: 0;}
+  80% {font-size: 20px; opacity: 1; content: "你好 !";}
+  100% {font-size: 20px; opacity: 0;}
 }
  
 #my-nav{
-  background-color: #333;
-  box-sizing: border-box;
+  background-color: #333333;
   color: white;
   position: sticky;
   top: 0;
@@ -42,10 +41,12 @@
  
 #my-picture {
   float: right;
-  box-sizing: border-box;
   width: 30%;
+  border-left: 1px solid #333;
+  padding: 10px;
+  box-sizing: border-box;
 }
- 
+
 #my-nav ul{
   padding: 0;
   margin: 0;
@@ -54,17 +55,16 @@
 }
  
 #my-nav li{
-  float: right;
   display: block;
   padding: 20px;
 }
  
 #my-nav a {
   text-align: center;
-  font-size: 70px;
+  font-size: 50px;
   font-style: Open Sans Condensed; 
 }
- 
+
 #content {
   margin-left: auto;
   margin-right: auto;
@@ -79,14 +79,11 @@ h1 {
   font-family: Helvetica, Arial, sans-serif
 }
  
-#introduction{
-  font-size: 40px;
-  color: blueviolet;
-  margin: auto;
+#main{
   float: left;
+  width: 70%;
+  padding: 0 30px;
   box-sizing: border-box;
-  width: 50%;
-  padding: 0 10%;
 }
  
 img {
@@ -104,16 +101,18 @@ a {
   font-size: 30px;
   color: blue;
 }
- 
-.facts{
-  font-size: 30px;
+
+.facts li{
+  display: block;
+  padding: 10px;
+  width: 20px;
 }
  
 #my-footer{
   bottom: 0;
-  position: fixed;
+  position: relative;
   text-align: center;
-  font-size: 10px;
+  font-size: 25px;
   padding: 10px;
 }
  
@@ -130,12 +129,22 @@ a {
 }
  
 #smaller-things{
-  font: 18px white;
-  font-style: Piedra Quicksand Titilium Web Arial; 
+  font: 25px white;
+  font-style: Titilium Web Arial; 
+  text-align: center;
 }
 
 img{
-
+  width: 40%;
 }
 
+.row{
+  display: flex;
+  border: 5px black;
+}
+
+.column{
+  flex: 20%;
+  padding: 5px;
+}
 

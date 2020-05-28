@@ -5,54 +5,66 @@
     <title>Kanbi Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-  </head>
-  <body>
+  </head> 
+
+  <body background-image: "/images/theone.jpeg">
     <header id="my-header">
-      <h1 id="my-name">Adetunji</h1>
-      <h1 id="welcome">Hello !</h1>
+      <h1 id="welcome"></h1>
     </header>
+
     <nav id="my-nav">
-      <div>
-        <ul>
-          <li style="float:left">home</li>
-          <li>resume</li>
-          <li><a href="https://www.linkedin.com/in/adetunji-akinola"><img src="/images/linkedin.png"</li>
-        </ul>
-      </div>
+      <ul>
+        <li style="float:left">Adetunji</li>
+        <li style="float:right">resume</li>
+      </ul>
     </nav>
-      <div id="smaller-things">
-          <p> Developer. Reader. Baller </p>
+
+    <div id="smaller-things">
+      <p> Developer. Reader. Enthusiast </p>
+    </div>
+
+    <div id="container">
+      <aside id="my-picture">
+        <img src="/images/a.jpeg" alt="logo"</> 
+      </aside>
+      <p id="main">
+        <h2>About Me</h2>
+        My name is Adetunji John Akinola(he/him). I am a rising sophomore dual majoring in Computer Science and Data Science at Fisk University.
+        I love diving into so various fields- music, language, cooking, gaming. Trying new things is what makes me happy.
+      </p>
+    </div>
+
+      <div class="row">
+        <div class="column">
+          <img src="/images/python.jpeg" alt="Python">
+        </div>
+        <div class="column">
+          <img src="/images/pasta.jpeg" alt="Pasta">
+        </div>
+        <div class="column">
+          <img src="/images/soccer.jpeg" alt="Soccer">
+        </div>
+        <div class="column">
+          <img src="/images/drums.jpeg" alt="Drums">
+        </div>
+        <div class="column">
+          <img src="/images/novel.jpg" alt="Novel">
+        </div>
       </div>
-      <div>
-        <aside id="my-picture">
-          <img src="/images/a.jpeg" alt="logo"</> 
-        </aside>
-        <p id="introduction">
-          My name is Adetunji John Akinola(he/him). I am a rising sophomore dual majoring in Computer Science and Data Science at Fisk University.
-          I would say I'm a <span id="interesting">pretty interesting</span> guy. Look what my facts say about me. 
-        </p>
-        <p>
-          <section class="facts">
-            Get to know me better:
-            <ul class="facts">
-              <li>I am exploring various field in technology and so I am very open to learning.</li>
-              <li>Diversity and inclusion in tech is something I care about a lot.</li>
-              <li>I am always happy because why not ?!!</li>
-            </ul>
-          </section>
-        </p>
-      </div>
+
       <div>
         <p>
           <h3>Projects</h3>
         <p>
       </div>
+      <p>
         <button onclick="sayRandomQuote()"> Click for one of my favorites quotes:</button>
         <br>
         <span id="quote-container"></span>
       </p>
       <p>Click here to get a random message:</p>
     </div>
+
     <footer id="my-footer">
       <p>&copy; website by Adetunji Akinola.</p> 
     </footer>
