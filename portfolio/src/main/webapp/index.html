@@ -2,17 +2,60 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Kanbi Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
+    <header id="my-header">
+      <h1 id="my-name">Adetunji</h1>
+      <h1 id="welcome">Hello !</h1>
+    </header>
+    <nav id="my-nav">
+      <div>
+        <ul>
+          <li style="float:left">home</li>
+          <li>resume</li>
+          <li><a href="https://www.linkedin.com/in/adetunji-akinola"><img src="/images/linkedin.png"</li>
+        </ul>
+      </div>
+    </nav>
+      <div id="smaller-things">
+          <p> Developer. Reader. Baller </p>
+      </div>
+      <div>
+        <aside id="my-picture">
+          <img src="/images/a.jpeg" alt="logo"</> 
+        </aside>
+        <p id="introduction">
+          My name is Adetunji John Akinola(he/him). I am a rising sophomore dual majoring in Computer Science and Data Science at Fisk University.
+          I would say I'm a <span id="interesting">pretty interesting</span> guy. Look what my facts say about me. 
+        </p>
+        <p>
+          <section class="facts">
+            Get to know me better:
+            <ul class="facts">
+              <li>I am exploring various field in technology and so I am very open to learning.</li>
+              <li>Diversity and inclusion in tech is something I care about a lot.</li>
+              <li>I am always happy because why not ?!!</li>
+            </ul>
+          </section>
+        </p>
+      </div>
+      <div>
+        <p>
+          <h3>Projects</h3>
+        <p>
+      </div>
+        <button onclick="sayRandomQuote()"> Click for one of my favorites quotes:</button>
+        <br>
+        <span id="quote-container"></span>
+      </p>
       <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
     </div>
+    <footer id="my-footer">
+      <p>&copy; website by Adetunji Akinola.</p> 
+    </footer>
   </body>
 </html>
+ 
