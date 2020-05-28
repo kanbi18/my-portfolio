@@ -23,11 +23,15 @@ html{
  
 @keyframes languages{
   0% {font-size: 20px; opacity: 0;}
-  20% {font-size: 20px; opacity: 1; content: "Hola!";}
+  10% {font-size: 20px; opacity: 1; content: "Hola!";}
+  20% {font-size: 20px; opacity: 0;}
+  30% {font-size: 20px; opacity: 1; content: "Hallo!";}
   40% {font-size: 20px; opacity: 0;}
-  60% {font-size: 20px; opacity: 1; content: "Hallo!";}
-  70% {font-size: 20px; opacity: 0;}
-  80% {font-size: 20px; opacity: 1; content: "你好 !";}
+  50% {font-size: 20px; opacity: 1; content: "你好!";}
+  60% {font-size: 20px; opacity: 0;}
+  70% {font-size: 20px; opacity: 1; content: "Salut!";}
+  80% {font-size: 20px; opacity: 0;}
+  90% {font-size: 20px; opacity: 1; content: "Habari!";}
   100% {font-size: 20px; opacity: 0;}
 }
  
@@ -55,8 +59,9 @@ html{
 }
  
 #my-nav li{
-  display: block;
+  display: inline;
   padding: 20px;
+  font-size: 20px;
 }
  
 #my-nav a {
@@ -70,11 +75,7 @@ html{
   margin-right: auto;
   width: 300px;
 }
- 
-#greeting-container {
-  margin-top: 20px;
-}
- 
+
 h1 {
   font-family: Helvetica, Arial, sans-serif
 }
@@ -87,7 +88,6 @@ h1 {
 }
  
 img {
-  width: 150px;
   padding: 20px;
   float: right;
 }
@@ -110,10 +110,8 @@ a {
  
 #my-footer{
   bottom: 0;
-  position: relative;
   text-align: center;
-  font-size: 25px;
-  padding: 10px;
+  font-size: 18px;
 }
  
 #icons-list{
@@ -148,3 +146,11 @@ img{
   padding: 5px;
 }
 
+.column img{
+  width: 40%;
+  box-sizing: border-box;
+}
+
+.container{
+  height: 25%;
+}

@@ -45,4 +45,29 @@ function sayRandomQuote(){
     quoteContainer.innerHTML = chosenQuote;
  
 }
- 
+
+let project = 0;
+projects = ["This was my first ever python project. I used file handling and some basic data structures to store information from users who create accounts and then that information can later be accessed in order to gain entry into the system. Priority was also added to each user, on account creation, depending on the password strength so users with weaker passwords had access to less sensitive information.",
+ "Game development is one of my stronger interests. So before I had learnt any OOLs, I used python to create the game: Draughts. Using the turtle module, I made the graphical representation of the board for the players to access. ", 
+ "With the use of R, I worked with a partner and a manager to analyze various 2020 United States presidential debates with the aim of trying emotion to the particular sections of the speech from the information mined."];
+
+function first(){
+  document.getElementById("project").innerHTML = projects[0];
+  document.getElementById("project-name").innerHTML = "Login System";
+  image = document.getElementById("project-image");
+  image.src = "/images/lock.jpg";
+}
+
+function second(){
+  document.getElementById("project").innerHTML = projects[1];
+  document.getElementById("project-name").innerHTML = "Draughts";
+  image = document.getElementById("project-image");
+  image.src = "/images/board.jpg";
+}
+
+function third(){
+  document.getElementById("project").innerHTML = projects[2];
+  document.getElementById("project-name").innerHTML = "Sentiment Analysis";
+  image = document.getElementById("project-image");
+  image.src = "/images/emotion.jpg";
+}

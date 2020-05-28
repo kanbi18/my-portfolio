@@ -7,9 +7,9 @@
     <script src="script.js"></script>
   </head> 
 
-  <body background-image: "/images/theone.jpeg">
+  <body>
     <header id="my-header">
-      <h1 id="welcome"></h1>
+      <h1 id="welcome">Look over there -></h1>
     </header>
 
     <nav id="my-nav">
@@ -21,48 +21,77 @@
 
     <div id="smaller-things">
       <p> Developer. Reader. Enthusiast </p>
+      <hr>
     </div>
 
-    <div id="container">
+    <div class="container">
       <aside id="my-picture">
-        <img src="/images/a.jpeg" alt="logo"</> 
+        <img src="/images/a.jpeg" alt="logo" width="30%" height= auto> 
       </aside>
       <p id="main">
-        <h2>About Me</h2>
+        <h1>About Me</h1>
         My name is Adetunji John Akinola(he/him). I am a rising sophomore dual majoring in Computer Science and Data Science at Fisk University.
         I love diving into so various fields- music, language, cooking, gaming. Trying new things is what makes me happy.
       </p>
+      <br>
     </div>
 
+    <div class="container">
       <div class="row">
         <div class="column">
-          <img src="/images/python.jpeg" alt="Python">
+          <p>My first and favorite language. I mean who doesn't love it ?!</p>
+          <img src="/images/python.jpeg" alt="Python" width="128" height="128">
         </div>
         <div class="column">
-          <img src="/images/pasta.jpeg" alt="Pasta">
+          <p>Rotini, Spaghetti, Fettucine.....pasta always hits different</p>
+          <img src="/images/pasta.jpeg" alt="Pasta" width="128" height="128">
         </div>
         <div class="column">
-          <img src="/images/soccer.jpeg" alt="Soccer">
+          <p>Football or Soccer(ughh) is the best sport on the planet. Easy!!</p>
+          <img src="/images/soccer.jpeg" alt="Soccer" width="128" height="128">
         </div>
         <div class="column">
-          <img src="/images/drums.jpeg" alt="Drums">
+          <p>Playing drums for me personfies beauty in the madness.</p>
+          <img src="/images/drums.jpeg" alt="Drums" width="128" height="128">
         </div>
         <div class="column">
-          <img src="/images/novel.jpg" alt="Novel">
+          <p>When i'm reading a novel, I'm a different person.....someone between Sherlock and Anakin.</p>
+          <img src="/images/novel.jpg" alt="Novel" width="128" height="128">
         </div>
       </div>
+    </div>
 
-      <div>
-        <p>
-          <h3>Projects</h3>
-        <p>
-      </div>
+    <div class="container">
+      <p>
+        <h1>Projects</h1>
+      </p>
+      <p id="project-container">
+          Find out my projects:
+          <h3 id="project-name"></h3>
+          <span id=project></span>
+          <img src="" alt="project" id="project-image" width="200" height="200">
+      </p>
+      <p id="buttons">
+        <div class="row">
+          <div class="column">
+            <button onclick="first()">First Project</button>        
+          </div>
+          <div class="column">
+            <button onclick="second()">Second Project</button>
+          </div>
+          <div class="column">
+            <button onclick="third()">Third Project</button>
+          </div>
+        </div>
+      </p>
+    </div>
+      
+    <div class="container">
       <p>
         <button onclick="sayRandomQuote()"> Click for one of my favorites quotes:</button>
         <br>
         <span id="quote-container"></span>
       </p>
-      <p>Click here to get a random message:</p>
     </div>
 
     <footer id="my-footer">
