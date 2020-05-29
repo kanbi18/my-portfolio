@@ -15,23 +15,25 @@
     <nav id="my-nav">
       <ul>
         <li style="float:left">Adetunji</li>
-        <li style="float:right">resume</li>
+        <li style="float:right">
+          <button onclick="resume()" id="resume-button">resume</button>
+        </li>
       </ul>
     </nav>
 
     <div id="smaller-things">
-      <p> Developer. Reader. Enthusiast </p>
+      <p> Developer.    Reader.    Enthusiast </p>
       <hr>
     </div>
 
-    <div class="container">
+    <div class="myHome">
       <aside id="my-picture">
-        <img src="/images/a.jpeg" alt="logo" width="30%" height= auto> 
+        <img src="/images/a.jpeg" alt="logo" width="30%" height = auto> 
       </aside>
-      <p id="main">
+      <p>
         <h1>About Me</h1>
-        My name is Adetunji John Akinola(he/him). I am a rising sophomore dual majoring in Computer Science and Data Science at Fisk University.
-        I love diving into so various fields- music, language, cooking, gaming. Trying new things is what makes me happy.
+        <p>My name is Adetunji John Akinola(he/him). I am a rising sophomore dual majoring in Computer Science and Data Science at Fisk University.
+        I love diving into so various fields - music, language, cooking, gaming. Exploring new things is where I find most fun.</p>
       </p>
       <br>
     </div>
@@ -61,15 +63,13 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="myProject">
+      <h1>Projects</h1>
       <p>
-        <h1>Projects</h1>
-      </p>
-      <p id="project-container">
-          Find out my projects:
+          <h2>Find out about my projects:</h2>
           <h3 id="project-name"></h3>
-          <span id=project></span>
-          <img src="" alt="project" id="project-image" width="200" height="200">
+          <span id="project"></span><br>
+          <p><img src="#" alt="projection" id="project-image" width="300" height="200"></p>
       </p>
       <p id="buttons">
         <div class="row">
@@ -88,10 +88,14 @@
       
     <div class="container">
       <p>
-        <button onclick="sayRandomQuote()"> Click for one of my favorites quotes:</button>
-        <br>
-        <span id="quote-container"></span>
+        <button onclick="sayRandomBook()"> For coming, here's a book recommendation: </button>
+        <br><br>
+        <span id="book-container"></span>
       </p>
+    </div>
+    <div>
+      <h3>Keep in touch! Check out my <a href="https://www.linkedin.com/in/adetunji-akinola">LinkedIn</a></h1>
+      <h4>See you soon!! Bye!!!</h4>
     </div>
 
     <footer id="my-footer">
