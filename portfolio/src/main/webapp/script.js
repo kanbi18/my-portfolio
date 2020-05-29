@@ -63,6 +63,10 @@ function third(){
   image.src = "/images/emotion.jpg";
 }
 
+/**
+ * Alerting user of resume information
+ */
+
 function resume(){
   alert("Coming Soon...Check out my LinkedIn profile for now");
 }
