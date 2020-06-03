@@ -116,13 +116,13 @@ a {
   height: 25%;
 }
 
-.myHome p{
+.my-home p{
   font-family: Helvetica, Arial;
   font-size: 25px;
   word-wrap: normal;
 }
 
-.myProject span, h2{
+.my-project span, h2{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 20px;
   word-wrap: normal;
