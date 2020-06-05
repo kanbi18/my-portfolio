@@ -1,51 +1,52 @@
-
-#myHeader {
-  color: blueviolet;
-  background-image: "/images/theone.jpeg";
+html{
+  background: url("../images/yes.jpg") no-repeat center center fixed;
   background-size: cover;
+  -webkit-background-size: cover;
 }
- 
-#myName{
-  float: left;
-  font: 25px Helvetica black;
+
+#my-header {
+  color: blueviolet;
+  background-size: cover;
 }
  
 #welcome::before{
   content: "Hello!"; 
   float: right;
-  font-size: 20px;
+  font-size: 40px;
   animation: languages 4s infinite;
 }
  
 @keyframes languages{
-  0% {font-size: 20px; opacity: 1;}
-  10% {font-size: 20px; opacity: 0; content: "Hola!";}
-  20% {font-size: 20px; opacity: 1;}
-  30% {font-size: 20px; opacity: 0; content: "";}
-  40% {font-size: 20px; opacity: 1;}
-  50% {font-size: 20px; opacity: 0; content: "Hallo!";}
-  60% {font-size: 20px; opacity: 1;}
-  70% {font-size: 20px; opacity: 0; content: "";}
-  80% {font-size: 20px; opacity: 1;}
-  90% {font-size: 20px; opacity: 0; content: "你好 !";}
-  100% {font-size: 20px; opacity: 1;}
+  0% {font-size: 20px; opacity: 0;}
+  10% {font-size: 20px; opacity: 1; content: "Hola!";}
+  20% {font-size: 20px; opacity: 0;}
+  30% {font-size: 20px; opacity: 1; content: "Hallo!";}
+  40% {font-size: 20px; opacity: 0;}
+  50% {font-size: 20px; opacity: 1; content: "你好!";}
+  60% {font-size: 20px; opacity: 0;}
+  70% {font-size: 20px; opacity: 1; content: "Salut!";}
+  80% {font-size: 20px; opacity: 0;}
+  90% {font-size: 20px; opacity: 1; content: "Habari!";}
+  100% {font-size: 20px; opacity: 0;}
 }
  
 #my-nav{
-  background-color: #333;
-  box-sizing: border-box;
+  background-color: #333333;
   color: white;
   position: sticky;
+  opacity: 0.9;
   top: 0;
-  border-bottom: solid 2px violet;
+  border-bottom: solid 4px violet;
 }
  
 #my-picture {
   float: right;
+  width: 250px;
+  height: 150px; 
+  padding: 10px;
   box-sizing: border-box;
-  width: 30%;
 }
- 
+
 #my-nav ul{
   padding: 0;
   margin: 0;
@@ -54,47 +55,20 @@
 }
  
 #my-nav li{
-  float: right;
-  display: block;
+  display: inline;
   padding: 20px;
+  font-size: 30px;
 }
  
 #my-nav a {
   text-align: center;
-  font-size: 70px;
-  font-style: Open Sans Condensed; 
+  font-style: "Open Sans Condensed"; 
 }
- 
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 300px;
-}
- 
-#greeting-container {
-  margin-top: 20px;
-}
- 
+
 h1 {
-  font-family: Helvetica, Arial, sans-serif
+  font-family: Helvetica, Arial, sans-serif;
 }
- 
-#introduction{
-  font-size: 40px;
-  color: blueviolet;
-  margin: auto;
-  float: left;
-  box-sizing: border-box;
-  width: 50%;
-  padding: 0 10%;
-}
- 
-img {
-  width: 150px;
-  padding: 20px;
-  float: right;
-}
- 
+
 a {
   text-decoration: none;
   text-decoration-color: inherit;
@@ -105,37 +79,66 @@ a {
   color: blue;
 }
  
-.facts{
-  font-size: 30px;
-}
- 
 #my-footer{
   bottom: 0;
-  position: fixed;
   text-align: center;
-  font-size: 10px;
-  padding: 10px;
-}
- 
-#icons-list{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
- 
-#icons-list li{
-    display: block;
-    padding: 10px;
-    float: right;
+  font-size: 18px;
 }
  
 #smaller-things{
-  font: 18px white;
-  font-style: Piedra Quicksand Titilium Web Arial; 
+  font: 25px white;
+  font-style: Titilium Web Arial; 
+  text-align: center;
 }
 
-img{
-
+.row{
+  display: flex;
+  border: 5px black;
 }
 
+.column{
+  flex: 20%;
+  padding: 5px;
+  border: 2px solid #333;
+}
 
+.column p{
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 20px;
+}
+
+.column img{
+  width: 40%;
+  box-sizing: border-box;
+}
+
+.container{
+  height: 25%;
+}
+
+.my-home p{
+  font-family: Helvetica, Arial;
+  font-size: 25px;
+  word-wrap: normal;
+}
+
+.my-project span, h2{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  word-wrap: normal;
+}
+
+#resume-button{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;  
+  padding: 20px;
+  font-size: 30px;
+  font-style: Helvetica;
+}
+
+.container span, button{
+  font-style: Helvetica, Arial;
+  font-size: 20px;
+}
