@@ -25,4 +25,35 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+  
+}
+
+function getRecommendedBook(){
+    fetch("/data").then(response => response.json()).then((book) => {
+        console.log("Yktv");
+        const foodList = document.getElementById("book-container");
+        foodList.innerText="";
+        foodList.appendChild(createFoodList("Title: " + book[0]));
+        foodList.appendChild(createFoodList("Author: "  + book[1]));
+        foodList.appendChild(createFoodList("Upvotes: " + book[2]));
+        foodList.appendChild(createFoodList("Downvotes: " + book[3]));
+    })
+}
+
+function createFoodList(text){
+    const liElement = document.createElement("li");
+    liElement.innerText = text;
+    return liElement;
+}
+
+
+function getNewBooks(){
+    fetch("/data").then(response => response.json()).then((books) => {
+        console.log(books);
+        const bookList = document.getElementById("new-recommendations");
+        bookList.innerText = "";
+        for(i = 0; i < books.length; i++){
+            bookList.appendChild(createFoodList(books[i]["title"] + " by " + books[i]["author"]));
+        }
+    })
 }

@@ -13,6 +13,51 @@
       <p>Click here to get a random message:</p>
       <button onclick="addRandomGreeting()">Hello</button>
       <div id="greeting-container"></div>
+      <br><br>
+      <p>
+          <button onclick="getRecommendedBook()">Book Recommendations</button>
+          <span id="book-container"></span>
+      </p>
+    </div>
+    <div id="form-container">
+      <span id="notice">Only fiction</span>
+    
+      <form action="/data" method="POST" id="book-form">
+        <label for="title-text">Title:</label>  
+        <input type="text" id="title-text" name="title" placeholder="Book title">
+        <label for="author-text">Author:</label>  
+        <input type="text" id="author-text" name="author" placeholder="Author name">
+
+        <select id="genre" name="genre">
+          <option value="romance">Romance</option>
+          <option value="ya">Young Adult</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="thriller">Thriller</option>
+        </select>
+
+        <input type="submit" value="Submit">
+      </form>
+      <!-- <form action="/data" method="POST" id="project-form">
+        <label for="title-text">Project Name:</label>  
+        <input type="text" id="name" name="name" placeholder="Project name....">
+        <label for="author-text">Description:</label>  
+        <input type="text" id="description" name="description" placeholder="Description here....">
+
+        <select id="genre" name="genre">
+          <option value="ml">Machine Learning</option>
+          <option value="ux-ui">UX/UI</option>
+          <option value="interview-prep">Interview Prep</option>
+          <option value="web-dev">Web Development</option>
+          <option value="game-dev">Game Development</option>
+        </select>
+
+        <input type="submit" value="Submit">        
+      </form> -->
+
+    </div>
+    <div>
+      <button onclick="getNewBooks()">New Recommendations</button>
+      <span id="new-recommendations"></span>
     </div>
   </body>
 </html>
