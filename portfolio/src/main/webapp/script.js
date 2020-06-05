@@ -22,11 +22,11 @@
 function sayRandomBook(){
     const books = [
         "Jane Eyre", "1984","Don Quixote", "The Great Gatsby", "Harry Potter and the Philosopher's Stone",
-        "War and Peace", "The Alchemist", "The Lord of the Rings", "Things fall apart", "Lord of the Flies", "Animal Farm",
+        "War and Peace", "The Alchemist", "The Lord of the Rings", "Things Fall Apart", "Lord of the Flies", "Animal Farm",
         "The Lion, The Witch, and the Wardrobe","Percy Jackson and the Lightning Thief", "Honor among thieves", "Summer Nights at the Midnight Hotel", "It", "The Hound of the Baskervilles",
     ];
  
-    const chosenbook= books[Math.floor(Math.random() * books.length)];
+    const chosenBook= books[Math.floor(Math.random() * books.length)];
  
     const bookContainer = document.getElementById("book-container");
     bookContainer.innerHTML = chosenbook;
@@ -40,7 +40,7 @@ function sayRandomBook(){
 let project = 0;
 const projects = ["This was my first ever python project. I used file handling and some basic data structures to store information from users who create accounts and then that information can later be accessed in order to gain entry into the system. Priority was also added to each user, on account creation, depending on the password strength so users with weaker passwords had access to less sensitive information.",
  "Game development is one of my stronger interests. So before I had learnt any OOLs, I used python to create the game: Draughts. Using the turtle module, I made the graphical representation of the board for the players to access. ", 
- "With the use of R, I worked with a partner and a manager to analyze various 2020 United States presidential debates with the aim of trying emotion to the particular sections of the speech from the information mined."];
+ "With the use of R, I worked with a partner and a manager to analyze various 2020 United States presidential debates with the aim of tying emotion to the particular sections of the speech from the information mined."];
 
 function first(){
   document.getElementById("project").innerHTML = projects[0];
@@ -69,4 +69,4 @@ function third(){
 
 function resume(){
   alert("Coming Soon...Check out my LinkedIn profile for now");
-}
+};
