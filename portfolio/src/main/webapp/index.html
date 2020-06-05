@@ -2,17 +2,105 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Kanbi Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-  </head>
+  </head> 
+
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+    <header id="my-header">
+      <h1 id="welcome">Look over there -></h1>
+    </header>
+
+    <nav id="my-nav">
+      <ul>
+        <li style="float:left">Adetunji</li>
+        <li style="float:right">
+          <button onclick="resume()" id="resume-button">resume</button>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="smaller-things">
+      <p> Developer.Reader.Enthusiast </p>
+      <hr>
     </div>
+
+    <div class="my-home">
+      <aside id="my-picture">
+        <img src="/images/me.png" alt="Me" width="150px" height="100px"> 
+      </aside>
+      <p>
+        <h1>About Me</h1>
+        <p>My name is Adetunji John Akinola(he/him). I am a rising sophomore dual majoring in Computer Science and Data Science at Fisk University.
+        I love diving into so various fields - music, language, cooking, gaming. Exploring new things is where I find most fun. Keep scrolling to find out more about me.</p>
+      </p>
+      <br>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="column">
+          <p>My first and favorite language. I mean who doesn't love it ?!</p>
+          <img src="/images/python.jpeg" alt="Python" width="200" height="150">
+        </div>
+        <div class="column">
+          <p>Rotini, Spaghetti, Fettucine.....pasta always hits different</p>
+          <img src="/images/pasta.jpeg" alt="Pasta" width="200" height="150">
+        </div>
+        <div class="column">
+          <p>Football or Soccer(ughh) is the best sport on the planet. Easy!!</p>
+          <img src="/images/soccer.jpeg" alt="Soccer" width="200" height="150">
+        </div>
+        <div class="column">
+          <p>Playing drums for me personifies beauty in the madness.</p>
+          <img src="/images/drums.jpeg" alt="Drums" width="200" height="150">
+        </div>
+        <div class="column">
+          <p>When I'm reading a novel, I'm a different person.....someone between Sherlock and Anakin.</p>
+          <img src="/images/novel.jpg" alt="Novel" width="200" height="150">
+        </div>
+      </div>
+    </div>
+
+    <div class="my-project">
+      <h1>Projects</h1>
+      <p>
+          <h2>Find out about my projects:</h2>
+          <h3 id="project-name"></h3>
+          <span id="project"></span><br>
+          <p><img src="/images/filler.jpg" alt="projection" id="project-image" width="300" height="200"></p>
+      </p>
+      <p id="buttons">
+        <div class="row">
+          <div class="column">
+            <button onclick="first()">First Project</button>        
+          </div>
+          <div class="column">
+            <button onclick="second()">Second Project</button>
+          </div>
+          <div class="column">
+            <button onclick="third()">Third Project</button>
+          </div>
+        </div>
+      </p>
+    </div>
+      
+    <div class="container">
+      <p>
+        <button onclick="sayRandomBook()"> For coming, here's a book recommendation: </button>
+        <br><br>
+        <span id="book-container"></span>
+      </p>
+    </div>
+    <div>
+      <h3>Keep in touch! Check out my <a href="https://www.linkedin.com/in/adetunji-akinola">LinkedIn</a></h1>
+      <h4>See you soon!! Bye!!!</h4>
+    </div>
+
+    <footer id="my-footer">
+      <p>&copy; website by Adetunji Akinola.</p> 
+    </footer>
   </body>
 </html>
+ 
