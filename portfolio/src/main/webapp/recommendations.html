@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="recommendation-container">
+      <div id="recommendation">
+        <h1>Book Recommendations!</h1>
+        <br><br>
+
+      <div id="form-container">
+        <form action="/data" method="POST" id="book-form">
+          <label for="title-text">Title:</label>  
+          <input type="text" id="title-text" name="title" placeholder="Book title">
+          <label for="author-text">Author:</label>  
+          <input type="text" id="author-text" name="author" placeholder="Author name">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <br><br>
+
+      <div id="refresh">
+
+        <form action="/data" method="POST">
+          <label for="range">Pick the limit the books on the page(1 - 20):</label>
+          <input type="number" id="range" name="range" min="1" max="20">
+          <input type="submit" value="Submit">
+        </form>
+        <br><br>
+
+        <button onclick="getNewBooks()" id="new-button">New Recommendations</button>
+        <span id="new-recommendations"></span>
+      </div>
+      <br><br>
+
+      <p><h2>Thank you for your contribution. <a href="/index.html">Home</a></h2></p>
+
+      </div>
+    </div>  
+  </body>
+</html>

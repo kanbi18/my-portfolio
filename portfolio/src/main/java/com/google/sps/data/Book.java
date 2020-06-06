@@ -18,23 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Book{
+public final class Book{
   
+  public int id;
   String title;
   String author;
-  int upvotes;
-  int downvotes;
+
+  static int count = 1;
   
   public Book(String title, String author){
+      this.id = count++;
       this.title = title;
       this.author = author;
-  }
-
-  public Book(String title, String author,int upvotes, int downvotes){
-      this.title = title;
-      this.author = author;
-      this.upvotes = upvotes;
-      this.downvotes = downvotes;
   }
 
   public String toString(){
