@@ -96,23 +96,15 @@ function createFoodList(text){
 
 function getNewBooks(){
     fetch("/data").then(response => response.json()).then((books) => {
-        console.log(books);
-        const bookList = document.getElementById("new-recommendations");
-        bookList.innerText = "";
-        let randomList = createRandomList(document.getElementById("range").value);
-        for(i in randomList){
-            bookList.appendChild(createFoodList(books[i]["title"] + " by " + books[i]["author"]));
-        }
-    })
+    console.log(books);
+    const bookList = document.getElementById("new-recommendations");
+    bookList.innerText = "";
+    for(i = 0; i < books.length; i++){
+        bookList.appendChild(createFoodList(books[i]["title"] + " by " + books[i]["author"]));
+    }
+  })
 }
 
-function createRandomList(num){
-    const lst = new Array();
-    while(lst.length < num){
-        let temp = Math.floor(Math.random * num);
-        if(!lst.includes(temp)){
-            lst.push(temp);
-        }
-    }
-    return lst;
+function deleteNulls(){
+    fetch("/delete-data", {method: 'POST'});  
 }
