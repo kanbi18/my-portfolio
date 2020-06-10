@@ -108,3 +108,40 @@ function getNewBooks(){
 function deleteNulls(){
     fetch("/delete-data", {method: 'POST'});  
 }
+
+/** Creates a map and adds it to the page. */
+var map;
+
+function createMap() {
+  eiffelTower = {lat: 48.858520, lng: 2.294441};
+  burjKhalifa = {lat: 25.197255, lng: 55.274527};
+  cristoRedentor = {lat: -22.950829, lng: -43.210745};
+  nouvelleCalédonie = {lat: -21.309019, lng: 165.357732};
+
+  const map = new google.maps.Map(document.getElementById('map'),
+      {center: eiffelTower, zoom: 10});
+
+  const centerMarker = new google.maps.Marker({
+    position: eiffelTower,
+    map: map,
+    title: "Mon centre du monde"
+  });
+
+  const wonderOne = new google.maps.Marker({
+    position: burjKhalifa,
+    map: map,
+    title: 'Tallest Building on Earth'
+  });
+
+  const wonderTwo = new google.maps.Marker({
+    position: cristoRedentor,
+    map: map,
+    title: 'Cristo Redentor'
+  });
+
+  const wonderThree = new google.maps.Marker({
+    position: nouvelleCalédonie,
+    map: map,
+    title: 'La Nouvelle-Calédonie'
+  });
+}
