@@ -93,7 +93,7 @@ function createFoodList(text){
     return liElement;
 }
 
-
+/** Shows the user the books in the datastore recommended by other users. */
 function getNewBooks(){
     fetch("/data").then(response => response.json()).then((books) => {
     console.log(books);
@@ -105,6 +105,19 @@ function getNewBooks(){
   })
 }
 
+/** Deletes the nulls in the datastore in the case that there happens to be any */
 function deleteNulls(){
     fetch("/delete-data", {method: 'POST'});  
 }
+
+
+/** Creates a map and adds it to the page. */
+var map;
+
+function createMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+        });
+}
+
