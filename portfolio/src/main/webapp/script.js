@@ -1,4 +1,3 @@
-
 // Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +11,25 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+ 
+/**
+ * Gives the user a random book recommendation.
+ */
+
+ 
+function sayRandomBook(){
+    const books = [
+        "Jane Eyre", "1984","Don Quixote", "The Great Gatsby", "Harry Potter and the Philosopher's Stone",
+        "War and Peace", "The Alchemist", "The Lord of the Rings", "Things Fall Apart", "Lord of the Flies", "Animal Farm",
+        "The Lion, The Witch, and the Wardrobe","Percy Jackson and the Lightning Thief", "Honor among thieves", "Summer Nights at the Midnight Hotel", "It", "The Hound of the Baskervilles",
+    ];
+ 
+    const chosenBook= books[Math.floor(Math.random() * books.length)];
+ 
+    const bookContainer = document.getElementById("book-container");
+    bookContainer.innerHTML = chosenbook;
+ 
+}
 
 
 // script for index.html
