@@ -29,6 +29,7 @@ public class Location {
 
   public double getLat() {
     return lat;
+    // yes
   }
 
   public double getLng() {
