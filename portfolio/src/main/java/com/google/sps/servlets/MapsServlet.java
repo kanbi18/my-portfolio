@@ -55,7 +55,7 @@ public class MapsServlet extends HttpServlet {
     String content = Jsoup.clean(request.getParameter("content"), Whitelist.none());
 
     Location location = new Location(lat, lng, content);
-    storeLocation(Location);
+    storeLocation(location);
   }
 
   /** Fetches Locations from Datastore. */
@@ -72,9 +72,9 @@ public class MapsServlet extends HttpServlet {
       String content = (String) entity.getProperty("content");
 
       Location location = new Location(lat, lng, content);
-      Locations.add(location);
+      locations.add(location);
     }
-    return Locations;
+    return locations;
   }
 
   /** Stores a Location in Datastore. */

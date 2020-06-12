@@ -181,3 +181,11 @@ a {
 #map{
   height: 70%;
 }
+
+#books-container{
+  visibility: hidden;
+}
+
+#image-container{
+  visibility: hidden;
+}

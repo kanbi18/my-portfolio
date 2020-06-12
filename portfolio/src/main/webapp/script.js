@@ -1,4 +1,3 @@
-
 // Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -75,6 +74,22 @@ function resume(){
 
 // script for recommendations.html
 
+function pickForm(){
+    const bookContainer = document.getElementById("book-recommendations");
+    const imageContainer = document.getElementById("image-container");
+
+    let chosenForm = document.getElementById("forms")
+    if(chosenForm.value === "book") {
+        bookContainer.style.visibility = "visible";
+        imageContainer.style.visibility = "hidden";
+
+    }else if(chosenForm.value === "image") {
+        bookContainer.style.visibility = "hidden";
+        imageContainer.style.visibility = "visible";
+        fetchBlobstoreUrl();
+    }
+}
+
 function getRecommendedBook(){
     fetch("/data").then(response => response.json()).then((book) => {
         console.log("Yktv");
@@ -110,7 +125,19 @@ function deleteNulls(){
     fetch("/delete-data", {method: 'POST'});  
 }
 
-let map;
+// Scripts for the blobstore API 
+
+function fetchBlobstoreUrl() {
+  	fetch("/blobstore")
+        .then((response) => {
+            return response.text();
+        })
+        .then((imageUploadUrl) => {
+            const messageForm = document.getElementById('my-form');
+            messageForm.action = imageUploadUrl;
+        });
+}
+
 
 /* Editable marker that displays when a user clicks in the map. */
 let editMarker;
@@ -138,7 +165,7 @@ function createMap() {
     createLocationForEdit(event.latLng.lat(), event.latLng.lng());
 });
 
-  fetchMarkers();
+  fetchLocations();
 }
 
 /** Fetches locations from the backend and adds them to the map. */
