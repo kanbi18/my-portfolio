@@ -178,14 +178,7 @@ a {
   list-style-image: url(images/book.jpeg);
 }
 
-#map{
-  height: 70%;
-}
-
-#books-container{
-  visibility: hidden;
-}
-
-#image-container{
-  visibility: hidden;
+#all-images li{
+  display: block;
+  padding: 5px;
 }

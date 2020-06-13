@@ -19,7 +19,7 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
-import com.google.sps.data.Location;
+import com.google.sps.data.Marker;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,9 +40,9 @@ public class MapsServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
 
-    Collection<Location> locations = getLocations();
+    Collection<Marker> markers = getMarkers();
     Gson gson = new Gson();
-    String json = gson.toJson(locations);
+    String json = gson.toJson(markers);
 
     response.getWriter().println(json);
   }
@@ -52,18 +52,18 @@ public class MapsServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) {
     double lat = Double.parseDouble(request.getParameter("lat"));
     double lng = Double.parseDouble(request.getParameter("lng"));
-    String content = Jsoup.clean(request.getParameter("content"), Whitelist.none());
+    String content = (String) request.getParameter("content");
 
-    Location location = new Location(lat, lng, content);
-    storeLocation(location);
+    Marker marker = new Marker(lat, lng, content);
+    storeLocation(marker);
   }
 
-  /** Fetches Locations from Datastore. */
-  private Collection<Location> getLocations() {
-    Collection<Location> locations = new ArrayList<>();
+  /** Fetches Markers from Datastore. */
+  private Collection<Marker> getMarkers() {
+    Collection<Marker> markers = new ArrayList<>();
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Query query = new Query("Location");
+    Query query = new Query("Marker");
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
@@ -71,20 +71,20 @@ public class MapsServlet extends HttpServlet {
       double lng = (double) entity.getProperty("lng");
       String content = (String) entity.getProperty("content");
 
-      Location location = new Location(lat, lng, content);
-      locations.add(location);
+      Marker marker = new Marker(lat, lng, content);
+      markers.add(marker);
     }
-    return locations;
+    return markers;
   }
 
   /** Stores a Location in Datastore. */
-  public void storeLocation(Location Location) {
-    Entity LocationEntity = new Entity("Location");
-    LocationEntity.setProperty("lat", Location.getLat());
-    LocationEntity.setProperty("lng", Location.getLng());
-    LocationEntity.setProperty("content", Location.getContent());
+  public void storeLocation(Marker marker) {
+    Entity MarkerEntity = new Entity("Marker");
+    MarkerEntity.setProperty("lat", marker.getLat());
+    MarkerEntity.setProperty("lng", marker.getLng());
+    MarkerEntity.setProperty("content", marker.getContent());
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(LocationEntity);
+    datastore.put(MarkerEntity);
   }
 }

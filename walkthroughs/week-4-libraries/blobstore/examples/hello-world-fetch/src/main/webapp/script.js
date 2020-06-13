@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-function fetchBlobstoreUrl() {
+function fetchBlobstoreUrlAndShowForm() {
   fetch('/blobstore-upload-url')
       .then((response) => {
         return response.text();
@@ -20,5 +20,6 @@ function fetchBlobstoreUrl() {
       .then((imageUploadUrl) => {
         const messageForm = document.getElementById('my-form');
         messageForm.action = imageUploadUrl;
+        messageForm.classList.remove("hidden");
       });
 }

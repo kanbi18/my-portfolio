@@ -5,23 +5,34 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <title>Locations</title>
-    <style>
-      #map {
-        height: 100%;
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="locationstyles.css">
+    <script src="locationscript.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS6d2psjPuDlfemnfQogqTElzhMadf3vU&callback=createMap"
     async defer></script>
   </head>
   <body onload="createMap()">
-    <h1>Where I've been.....</h1>
+      <nav id="my-nav">
+        <ul>
+          <li style="float:left"><a href="/index.html">Home</a></li>
+          <li style="float:right">
+            <button onclick="pageInfo()" id="resume-button">My Tour</button>
+          </li>
+        </ul>
+      </nav>
+      <br><br>
+      <h1>....I'm open to your recommendations</h1>
+      <h2>Click on the map to show me</h2>
+        <form action="/location" method="POST" id="book-form" autocomplete="off">
+          <label for="lat">Latitude:</label>  
+          <input type="text" id="lat" name="lat" placeholder="Latitude">
+          <label for="lng">Longitude:</label>  
+          <input type="text" id="lng" name="lng" placeholder="Longitude">
+          <label for="content">Content:</label>  
+          <input type="text" id="content" name="content" placeholder="Text">
+          <input type="submit" value="Submit"> 
+        </form>
+        <br><br><br>
+
     <div id="map"></div>
-    <p>Click in the map to create a new marker.</p>
   </body>
 </html>

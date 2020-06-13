@@ -74,33 +74,10 @@ function resume(){
 
 // script for recommendations.html
 
-function pickForm(){
-    const bookContainer = document.getElementById("book-recommendations");
-    const imageContainer = document.getElementById("image-container");
+function recommendation(){
+  alert("This page is your way to give to me and others!");
+};
 
-    let chosenForm = document.getElementById("forms")
-    if(chosenForm.value === "book") {
-        bookContainer.style.visibility = "visible";
-        imageContainer.style.visibility = "hidden";
-
-    }else if(chosenForm.value === "image") {
-        bookContainer.style.visibility = "hidden";
-        imageContainer.style.visibility = "visible";
-        fetchBlobstoreUrl();
-    }
-}
-
-function getRecommendedBook(){
-    fetch("/data").then(response => response.json()).then((book) => {
-        console.log("Yktv");
-        const foodList = document.getElementById("book-container");
-        foodList.innerText="";
-        foodList.appendChild(createFoodList("Title: " + book[0]));
-        foodList.appendChild(createFoodList("Author: "  + book[1]));
-        foodList.appendChild(createFoodList("Upvotes: " + book[2]));
-        foodList.appendChild(createFoodList("Downvotes: " + book[3]));
-    })
-}
 
 function createFoodList(text){
     const liElement = document.createElement("li");
@@ -128,116 +105,32 @@ function deleteNulls(){
 // Scripts for the blobstore API 
 
 function fetchBlobstoreUrl() {
-  	fetch("/blobstore")
-        .then((response) => {
-            return response.text();
-        })
-        .then((imageUploadUrl) => {
-            const messageForm = document.getElementById('my-form');
-            messageForm.action = imageUploadUrl;
-        });
+  fetch('/blobstore')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('image-form');
+        messageForm.action = imageUploadUrl;
+      });
 }
 
 
-/* Editable marker that displays when a user clicks in the map. */
-let editMarker;
-
-/** Creates a map and adds it to the page. */
-var map;
-
-function createMap() {
-    eiffelTower = {lat: 48.8539173,lng: 2.2957289};
-    cristo = {lat: -22.951911,lng: -43.2126759,};
-    buckingham= {lat: 51.5013673,lng: -0.1440787};
-
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: eiffelTower,
-        zoom: 10,
-        });
-
-    const centreMark = new google.maps.Location({position: eiffelTower, map: map, title: 'My gift to Paris'});
-    const wonderOne = new google.maps.Location({position: cristo, map: map, title: 'Christ the Redeemer'});
-    const wonderTwo = new google.maps.Location({position: buckingham, map: map, title: 'Home of Royalty'});
-
-    // When the user clicks in the map, show a marker with a text box the user can
-    // edit.
-    map.addListener('click', (event) => {
-    createLocationForEdit(event.latLng.lat(), event.latLng.lng());
-});
-
-  fetchLocations();
+function createImageList(source){
+    const imgElement = document.createElement("img");
+    imgElement.src = source;
+    return imgElement;
 }
 
-/** Fetches locations from the backend and adds them to the map. */
-function fetchLocations() {
-  fetch('/location').then(response => response.json()).then((location) => {
-    location.forEach(
-        (location) => {
-            createLocationForDisplay(location.lat, location.lng, location.content)});
-  });
+/** Shows the user the images in the datastore recommended by other users. */
+function getAllImages(){
+    fetch("/image").then(response => response.json()).then((images) => {
+    console.log(images);
+    const imageList = document.getElementById("all-images");
+    imageList.innerText = "";
+    for(i = 0; i < images.length; i++){
+        imageList.appendChild(createImageList(images[i]["uploadUrl"]));
+    }
+  })
 }
 
-/** Creates a location that shows a read-only info window when clicked. */
-function createLocationForDisplay(lat, lng, content) {
-  const location =
-      new google.maps.Location({position: {lat: lat, lng: lng}, map: map});
-
-  const infoWindow = new google.maps.InfoWindow({content: content});
-  location.addListener('click', () => {
-    infoWindow.open(map, location);
-  });
-}
-
-/** Sends a location to the backend for saving. */
-function postLocation(lat, lng, content) {
-  const params = new URLSearchParams();
-  params.append('lat', lat);
-  params.append('lng', lng);
-  params.append('content', content);
-
-  fetch('/location', {method: 'POST', body: params});
-}
-
-/** Creates a location that shows a textbox the user can edit. */
-function createLocationForEdit(lat, lng) {
-  // If we're already showing an editable location, then remove it.
-  if (editLocation) {
-    editLocation.setMap(null);
-  }
-
-  editLocation =
-      new google.maps.Location({position: {lat: lat, lng: lng}, map: map});
-
-  const infoWindow =
-      new google.maps.InfoWindow({content: buildInfoWindowInput(lat, lng)});
-
-  // When the user closes the editable info window, remove the location.
-  google.maps.event.addListener(infoWindow, 'closeclick', () => {
-    editLocation.setMap(null);
-  });
-
-  infoWindow.open(map, editLocation);
-}
-
-/**
- * Builds and returns HTML elements that show an editable textbox and a submit
- * button.
- */
-function buildInfoWindowInput(lat, lng) {
-  const textBox = document.createElement('textarea');
-  const button = document.createElement('button');
-  button.appendChild(document.createTextNode('Submit'));
-
-  button.onclick = () => {
-    postLocation(lat, lng, textBox.value);
-    createLocationForDisplay(lat, lng, textBox.value);
-    editLocation.setMap(null);
-  };
-
-  const containerDiv = document.createElement('div');
-  containerDiv.appendChild(textBox);
-  containerDiv.appendChild(document.createElement('br'));
-  containerDiv.appendChild(button);
-
-  return containerDiv;
-}

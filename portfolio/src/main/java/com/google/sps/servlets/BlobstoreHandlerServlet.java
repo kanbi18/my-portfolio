@@ -32,6 +32,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.sps.data.Image;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * When the user submits the form, Blobstore processes the file upload and then forwards the request
@@ -52,6 +60,10 @@ public class BlobstoreHandlerServlet extends HttpServlet {
 
     // Output some HTML that shows the data the user entered.
     // A real codebase would probably store these in Datastore.
+
+    Image image = new Image(message, imageUrl);
+    storeImage(image);
+
     PrintWriter out = response.getWriter();
     out.println("<p>Here's the image you uploaded:</p>");
     out.println("<a href=\"" + imageUrl + "\">");
@@ -59,6 +71,8 @@ public class BlobstoreHandlerServlet extends HttpServlet {
     out.println("</a>");
     out.println("<p>Here's the text you entered:</p>");
     out.println(message);
+
+
   }
 
   /** Returns a URL that points to the uploaded file, or null if the user didn't upload a file. */
@@ -97,5 +111,15 @@ public class BlobstoreHandlerServlet extends HttpServlet {
     } catch (MalformedURLException e) {
       return imagesService.getServingUrl(options);
     }
+  }
+
+  /** Stores an Image in Datastore. */
+  public void storeImage(Image image) {
+    Entity ImageEntity = new Entity("Image");
+    ImageEntity.setProperty("url", image.getUrl());
+    ImageEntity.setProperty("message", image.getMessage());
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(ImageEntity);
   }
 }

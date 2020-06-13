@@ -6,32 +6,30 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body onload="fetchBlobstoreUrl()">
+  <body>
 
       <nav id="my-nav">
         <ul>
           <li style="float:left"><a href="/index.html">Home</a></li>
           <li style="float:right">
-            <button onclick="userLogin()">Login</button>
+            <button onclick="recommendation()" id="resume-button">User Activity</button>
           </li>
         </ul>
       </nav>
 
       <br><br>
 
-    </div>
-
     <div id="recommendation-container">
       <div id="recommendation">
 
-      <label for="forms">Choose a form:</label>
+      <!-- <label for="forms">Choose a form:</label>
       <form>
         <select id="forms">
           <option value="book">Upload Book</option>
           <option value="image">Upload Image</option>
         </select>
       </form>              
-      <button type="button" onclick="pickForm()">Here!</button>
+      <button type="button" onclick="pickForm()">Here!</button> -->
 
 
       <div id="book-recommendations">
@@ -65,21 +63,6 @@
           <!-- <button onclick="deleteNulls()">Delete Nulls</button> -->
         </div>
       </div>
-
-      <div id="image-container">
-        <h1>Image Recommendations!</h1>
-        <form id="image-form" method="POST" enctype="multipart/form-data">
-          <p>Type some text:</p>
-          <textarea name="message"></textarea>
-            <br/>
-          <p>Upload an image:</p>
-          <input type="file" name="image">
-          <br/><br/>
-          <button>Submit</button>
-        </form>
-        <p id="show-image"></p>
-      </div> 
-
       </div>   
 
       </div>
