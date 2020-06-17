@@ -94,7 +94,9 @@ function resume(){
 // script for recommendations.html
 
 function getRecommendedBook(){
-    fetch("/data").then(response => response.json()).then((book) => {
+    var range = document.getElementById("range").value;
+    var url = (`/data/?range=${range}`);
+    fetch(url).then(response => response.json()).then((book) => {
         console.log("Yktv");
         const foodList = document.getElementById("book-container");
         foodList.innerText="";
