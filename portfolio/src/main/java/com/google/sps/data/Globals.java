@@ -15,5 +15,5 @@
 package com.google.sps.data;
 
 public class Globals {
-    public static String range;
+    public static String range = "1";
 }
