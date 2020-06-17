@@ -17,7 +17,6 @@ package com.google.sps.data;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public final class Book {
   
   String title;
