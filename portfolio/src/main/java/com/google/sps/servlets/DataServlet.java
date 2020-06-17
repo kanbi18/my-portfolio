@@ -42,8 +42,9 @@ public final class DataServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         List<Book> library = new ArrayList<>();
-   
-        List<Entity> results = getAllBooks(request, Globals.range);
+        int range = Integer.parseInt(request.getParameter("range"));
+        List<Entity> results = getAllBooks(request, range);
+     
         for (Entity entity : results) {
             String book_title = (String) entity.getProperty("title");
             String author = (String) entity.getProperty("author");
