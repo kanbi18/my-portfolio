@@ -98,14 +98,14 @@ function getRecommendedBook(){
         console.log("Yktv");
         const foodList = document.getElementById("book-container");
         foodList.innerText="";
-        foodList.appendChild(createFoodList("Title: " + book[0]));
-        foodList.appendChild(createFoodList("Author: "  + book[1]));
-        foodList.appendChild(createFoodList("Upvotes: " + book[2]));
-        foodList.appendChild(createFoodList("Downvotes: " + book[3]));
+        foodList.appendChild(createList("Title: " + book[0]));
+        foodList.appendChild(createList("Author: "  + book[1]));
+        foodList.appendChild(createList("Upvotes: " + book[2]));
+        foodList.appendChild(createList("Downvotes: " + book[3]));
     })
 }
 
-function createFoodList(text){
+function createList(text){
     const liElement = document.createElement("li");
     liElement.innerText = text;
     return liElement;
@@ -118,7 +118,7 @@ function getNewBooks(){
     const bookList = document.getElementById("new-recommendations");
     bookList.innerText = "";
     for(i = 0; i < books.length; i++){
-        bookList.appendChild(createFoodList(books[i]["title"] + " by " + books[i]["author"]));
+        bookList.appendChild(createList(books[i]["title"] + " by " + books[i]["author"]));
     }
   })
 }
