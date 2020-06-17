@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="recommendation-container">
+      <div id="recommendation">
+        <h1>Book Recommendations!</h1>
+
+        <br><br>
+
+      <div id="form-container">
+        <form action="/data" method="POST" id="book-form">
+          <label for="title-text">Title:</label>  
+          <input type="text" id="title-text" name="title" placeholder="Book title">
+          <label for="author-text">Author:</label>  
+          <input type="text" id="author-text" name="author" placeholder="Author name">
+          <input type="submit" value="Submit"> 
+        </form>
+      </div>
+
+      <br><br>
+
+      <div id="book-container">
+        <span><h2>Get Some Books chosen by our wonderful readers</h2> </span>
+        <form action="/data" method="POST">
+          <label for="range">Want a random book? Pick how many(1 - 5):</label>
+          <input type="number" name="range" min="1" max="5" value="1">
+          <input type="submit" value="Submit"> 
+        </form>
+        <br>
+        <button onclick="getNewBooks()">Get a random book here</button>
+        <ul id="new-recommendations"></ul>
+        <br>
+
+        <p><h2>Thank you for your contribution. <a href="/index.html">Home</a></h2></p>
+
+        <br><br>
+
+      </div>
+      </div>
+    </div>  
+  </body>
+</html>

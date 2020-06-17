@@ -52,7 +52,7 @@ public final class SubtractionServlet extends HttpServlet {
 
     game.takePlayerTurn(playerChoice);
 
-    // Redirect back to the HTML page.
+    // Redirect back to the HTML page. 
     response.sendRedirect("/index.html");
   }
 
