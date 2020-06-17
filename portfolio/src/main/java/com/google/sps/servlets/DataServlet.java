@@ -16,7 +16,6 @@ package com.google.sps.servlets;
  
 import java.io.IOException;
 import com.google.sps.data.Book;
-import com.google.sps.data.Globals;
 import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,7 +61,6 @@ public final class DataServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String book_title = request.getParameter("title");
         String author = request.getParameter("author");
-        Globals.range = request.getParameter("range");
         if (validateInput(book_title, author)) {  
             Book book = new Book(book_title, author);
             Entity bookEntry = new Entity("Book");
