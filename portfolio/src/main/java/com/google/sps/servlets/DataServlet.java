@@ -68,7 +68,6 @@ public final class DataServlet extends HttpServlet {
             Entity bookEntry = new Entity("Book");
             bookEntry.setProperty("title", book_title);
             bookEntry.setProperty("author", author);
-            bookEntry.setProperty("number", book.id);
 
             DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
             datastore.put(bookEntry);
