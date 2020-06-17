@@ -44,11 +44,11 @@ public final class DataServlet extends HttpServlet {
         List<Book> library = new ArrayList<>();
    
         List<Entity> results = getAllBooks(request, Globals.range);
-        for(Entity entity : results){
+        for (Entity entity : results) {
             String book_title = (String) entity.getProperty("title");
             String author = (String) entity.getProperty("author");
-            Book tempBook = new Book(book_title, author);
-            library.add(tempBook);
+            Book book = new Book(book_title, author);
+            library.add(book);
         }
 
 
@@ -59,26 +59,21 @@ public final class DataServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        try {
-            String book_title = request.getParameter("title");
-            String author = request.getParameter("author");
-            Globals.range = request.getParameter("range");
-            if(book_title.length() == 0 || author.length() == 0){
-                response.sendRedirect("/recommendations.html");;
-            }else{
-                Book temp = new Book(book_title, author);
-                Entity bookEntry = new Entity("Book");
-                bookEntry.setProperty("title", book_title);
-                bookEntry.setProperty("author", author);
-                bookEntry.setProperty("number", temp.id);
+        String book_title = request.getParameter("title");
+        String author = request.getParameter("author");
+        Globals.range = request.getParameter("range");
+        if (validateInput(book_title, author)) {  
+            Book book = new Book(book_title, author);
+            Entity bookEntry = new Entity("Book");
+            bookEntry.setProperty("title", book_title);
+            bookEntry.setProperty("author", author);
+            bookEntry.setProperty("number", book.id);
 
-                DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-                datastore.put(bookEntry);
+            DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+            datastore.put(bookEntry);
 
             response.sendRedirect("/recommendations.html");
-            }
-        }catch(NullPointerException e) {
-            System.out.println("NullPointerException thrown!");
+        } else {
             response.sendRedirect("/recommendations.html");
         }
     }
@@ -91,4 +86,16 @@ public final class DataServlet extends HttpServlet {
         List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(limit));
         return results;
   }
+
+    private Boolean validateInput(String book_title, String author) {
+        if (book_title == null) {
+            return false;
+        }
+
+        if (author == null){
+            return false;
+        }
+
+        return true;
+    }
 }
