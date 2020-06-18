@@ -79,7 +79,7 @@ function recommendation(){
 };
 
 
-function createFoodList(text){
+function createBookList(text){
     const liElement = document.createElement("li");
     liElement.innerText = text;
     return liElement;
@@ -87,12 +87,14 @@ function createFoodList(text){
 
 /** Shows the user the books in the datastore recommended by other users. */
 function getNewBooks(){
-    fetch("/data").then(response => response.json()).then((books) => {
+    const range = document.getElementById("range").value;
+    const url = (`/data/?range=${range}`);
+    fetch(url).then(response => response.json()).then((books) => {
     console.log(books);
     const bookList = document.getElementById("new-recommendations");
     bookList.innerText = "";
     for(i = 0; i < books.length; i++){
-        bookList.appendChild(createFoodList(books[i]["title"] + " by " + books[i]["author"]));
+        bookList.appendChild(createBookList(books[i]["title"] + " by " + books[i]["author"]));
     }
   })
 }
