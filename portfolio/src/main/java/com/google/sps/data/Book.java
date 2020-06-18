@@ -17,20 +17,17 @@ package com.google.sps.data;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public final class Book{
+public final class Book {
   
   String title;
   String author;
-
-  private static int count;
   
-  public Book(String title, String author){
+  public Book(String title, String author) {
       this.title = title;
       this.author = author;
   }
 
-  public String toString(){
+  public String toString() {
     return title + " " + author;
   }
 }

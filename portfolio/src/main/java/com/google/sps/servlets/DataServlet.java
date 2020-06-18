@@ -16,7 +16,6 @@ package com.google.sps.servlets;
  
 import java.io.IOException;
 import com.google.sps.data.Book;
-import com.google.sps.data.Globals;
 import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +44,7 @@ public final class DataServlet extends HttpServlet {
         int range = Integer.parseInt(request.getParameter("range"));
         List<Entity> results = getAllBooks(request, range);
      
-        for(Entity entity : results){
+        for (Entity entity : results) {
             String book_title = (String) entity.getProperty("title");
             String author = (String) entity.getProperty("author");
             Book book = new Book(book_title, author);
@@ -60,7 +59,7 @@ public final class DataServlet extends HttpServlet {
     }
 
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String book_title = request.getParameter("title");
         String author = request.getParameter("author");
         if (validateInput(book_title, author)) {  
@@ -86,4 +85,16 @@ public final class DataServlet extends HttpServlet {
         List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(limit));
         return results;
   }
+
+    private Boolean validateInput(String book_title, String author) {
+        if (book_title == null) {
+            return false;
+        }
+
+        if (author == null){
+            return false;
+        }
+
+        return true;
+    }
 }

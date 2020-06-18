@@ -11,6 +11,25 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+ 
+/**
+ * Gives the user a random book recommendation.
+ */
+
+ 
+function sayRandomBook(){
+    const books = [
+        "Jane Eyre", "1984","Don Quixote", "The Great Gatsby", "Harry Potter and the Philosopher's Stone",
+        "War and Peace", "The Alchemist", "The Lord of the Rings", "Things Fall Apart", "Lord of the Flies", "Animal Farm",
+        "The Lion, The Witch, and the Wardrobe","Percy Jackson and the Lightning Thief", "Honor among thieves", "Summer Nights at the Midnight Hotel", "It", "The Hound of the Baskervilles",
+    ];
+ 
+    const chosenBook= books[Math.floor(Math.random() * books.length)];
+ 
+    const bookContainer = document.getElementById("book-container");
+    bookContainer.innerHTML = chosenbook;
+ 
+}
 
 
 // script for index.html
@@ -74,7 +93,7 @@ function resume(){
 
 // script for recommendations.html
 
-function recommendation(){
+function recommendation() {
   alert("This page is your way to give to me and others!");
 };
 
@@ -95,6 +114,7 @@ function getNewBooks(){
     bookList.innerText = "";
     for(i = 0; i < books.length; i++){
         bookList.appendChild(createBookList(books[i]["title"] + " by " + books[i]["author"]));
+
     }
   })
 }
@@ -118,14 +138,14 @@ function fetchBlobstoreUrl() {
 }
 
 
-function createImageList(source){
+function createImageList(source) {
     const imgElement = document.createElement("img");
     imgElement.src = source;
     return imgElement;
 }
 
 /** Shows the user the images in the datastore recommended by other users. */
-function getAllImages(){
+function getAllImages() {
     fetch("/image").then(response => response.json()).then((images) => {
     console.log(images);
     const imageList = document.getElementById("all-images");
