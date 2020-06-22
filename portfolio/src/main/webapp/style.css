@@ -128,7 +128,7 @@ a {
   word-wrap: normal;
 }
 
-#resume-button{
+.resume-button{
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
