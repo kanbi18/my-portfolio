@@ -43,7 +43,7 @@ public final class DeleteDataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
-    for(Entity entity : results.asIterable()){
+    for (Entity entity : results.asIterable()) {
         String book_title = (String) entity.getProperty("title");
         String author = (String) entity.getProperty("author");
         if(book_title == null || author == null){

@@ -20,7 +20,7 @@
  */
 
  
-function sayRandomBook(){
+function sayRandomBook() {
     const books = [
         "Jane Eyre", "1984","Don Quixote", "The Great Gatsby", "Harry Potter and the Philosopher's Stone",
         "War and Peace", "The Alchemist", "The Lord of the Rings", "Things Fall Apart", "Lord of the Flies", "Animal Farm",
@@ -43,21 +43,21 @@ const projects = ["This was my first ever python project. I used file handling a
  "Game development is one of my stronger interests. So before I had learnt any OOLs, I used python to create the game: Draughts. Using the turtle module, I made the graphical representation of the board for the players to access. ", 
  "With the use of R, I worked with a partner and a manager to analyze various 2020 United States presidential debates with the aim of tying emotion to the particular sections of the speech from the information mined."];
 
-function first(){
+function first() {
   document.getElementById("project").innerHTML = projects[0];
   document.getElementById("project-name").innerHTML = "Login System";
   image = document.getElementById("project-image");
   image.src = "/images/lock.jpg";
 }
 
-function second(){
+function second() {
   document.getElementById("project").innerHTML = projects[1];
   document.getElementById("project-name").innerHTML = "Draughts";
   image = document.getElementById("project-image");
   image.src = "/images/board.jpg";
 }
 
-function third(){
+function third() {
   document.getElementById("project").innerHTML = projects[2];
   document.getElementById("project-name").innerHTML = "Sentiment Analysis";
   image = document.getElementById("project-image");
@@ -68,37 +68,37 @@ function third(){
  * Alerting user of resume information
  */
 
-function resume(){
+function resume() {
   alert("Coming Soon...Check out my LinkedIn profile for now");
 };
 
 // script for recommendations.html
 
-function recommendation(){
+function recommendation() {
   alert("This page is your way to give to me and others!");
 };
 
 
-function createFoodList(text){
+function createBookList(text) {
     const liElement = document.createElement("li");
     liElement.innerText = text;
     return liElement;
 }
 
 /** Shows the user the books in the datastore recommended by other users. */
-function getNewBooks(){
+function getNewBooks() {
     fetch("/data").then(response => response.json()).then((books) => {
     console.log(books);
     const bookList = document.getElementById("new-recommendations");
     bookList.innerText = "";
     for(i = 0; i < books.length; i++){
-        bookList.appendChild(createFoodList(books[i]["title"] + " by " + books[i]["author"]));
+        bookList.appendChild(createBookList(books[i]["title"] + " by " + books[i]["author"]));
     }
   })
 }
 
 /** Deletes the nulls in the datastore in the case that there happens to be any */
-function deleteNulls(){
+function deleteNulls() {
     fetch("/delete-data", {method: 'POST'});  
 }
 
@@ -116,19 +116,19 @@ function fetchBlobstoreUrl() {
 }
 
 
-function createImageList(source){
+function createImageList(source) {
     const imgElement = document.createElement("img");
     imgElement.src = source;
     return imgElement;
 }
 
 /** Shows the user the images in the datastore recommended by other users. */
-function getAllImages(){
+function getAllImages() {
     fetch("/image").then(response => response.json()).then((images) => {
     console.log(images);
     const imageList = document.getElementById("all-images");
     imageList.innerText = "";
-    for(i = 0; i < images.length; i++){
+    for (i = 0; i < images.length; i++) {
         imageList.appendChild(createImageList(images[i]["uploadUrl"]));
     }
   })

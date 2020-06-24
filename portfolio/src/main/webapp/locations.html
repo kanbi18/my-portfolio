@@ -11,28 +11,29 @@
     async defer></script>
   </head>
   <body onload="createMap()">
-      <nav id="my-nav">
-        <ul>
-          <li style="float:left"><a href="/index.html">Home</a></li>
-          <li style="float:right">
-            <button onclick="pageInfo()" id="resume-button">My Tour</button>
-          </li>
-        </ul>
-      </nav>
-      <br><br>
-      <h1>....I'm open to your recommendations</h1>
-      <h2>Click on the map to show me</h2>
-        <form action="/location" method="POST" id="book-form" autocomplete="off">
-          <label for="lat">Latitude:</label>  
-          <input type="text" id="lat" name="lat" placeholder="Latitude">
-          <label for="lng">Longitude:</label>  
-          <input type="text" id="lng" name="lng" placeholder="Longitude">
-          <label for="content">Content:</label>  
-          <input type="text" id="content" name="content" placeholder="Text">
-          <input type="submit" value="Submit"> 
-        </form>
-        <br><br><br>
-
+      <div id="content">
+        <nav id="my-nav">
+          <ul>
+            <li style="float:left"><a href="/index.html">Home</a></li>
+            <li style="float:right">
+              <button onclick="pageInfo()" id="resume-button">My Tour</button>
+            </li>
+          </ul>
+        </nav>
+        <br><br>
+        <h1>....I'm open to your recommendations</h1>
+        <h2>Click on the map to show me</h2>
+          <form action="/location" method="POST" id="book-form" autocomplete="off">
+            <label for="lat">Latitude:</label>  
+            <input type="text" id="content" name="lat" placeholder="Latitude">
+            <label for="lng">Longitude:</label>  
+            <input type="text" id="content" name="lng" placeholder="Longitude">
+            <label for="content">Content:</label>  
+            <input type="text" id="content" name="content" placeholder="Text">
+            <input type="submit" value="Submit"> 
+          </form>
+          <br><br><br>
+      </div>
     <div id="map"></div>
   </body>
 </html>
