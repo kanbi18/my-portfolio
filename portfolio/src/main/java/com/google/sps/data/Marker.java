@@ -12,14 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-function fetchBlobstoreUrlAndShowForm() {
-  fetch('/blobstore-upload-url')
-      .then((response) => {
-        return response.text();
-      })
-      .then((imageUploadUrl) => {
-        const messageForm = document.getElementById('my-form');
-        messageForm.action = imageUploadUrl;
-        messageForm.classList.remove("hidden");
-      });
+package com.google.sps.data;
+
+/** Represents a marker on the map. */
+public class Marker {
+
+  private final double lat;
+  private final double lng;
+  private final String content;
+
+  public Marker(double lat, double lng, String content) {
+    this.lat = lat;
+    this.lng = lng;
+    this.content = content;
+  }
+
+  public double getLat() {
+    return lat;
+  }
+
+  public double getLng() {
+    return lng;
+  }
+
+  public String getContent() {
+    return content;
+  }
 }

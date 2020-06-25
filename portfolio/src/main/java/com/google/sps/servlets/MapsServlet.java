@@ -31,11 +31,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
-/** Handles fetching and saving markers data. */
-@WebServlet("/marker")
-public class MarkerServlet extends HttpServlet {
+/** Handles fetching and saving Locations data. */
+@WebServlet("/location")
+public class MapsServlet extends HttpServlet {
+// TODO: A GET request to "/location" will be added in the HTML/javascript in the future. Could be used in capstone
 
-  /** Responds with a JSON array containing marker data. */
+  /** Responds with a JSON array containing Location data. */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
@@ -47,18 +48,18 @@ public class MarkerServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
-  /** Accepts a POST request containing a new marker. */
+  /** Accepts a POST request containing a new Location. */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) {
     double lat = Double.parseDouble(request.getParameter("lat"));
     double lng = Double.parseDouble(request.getParameter("lng"));
-    String content = Jsoup.clean(request.getParameter("content"), Whitelist.none());
+    String content = (String) request.getParameter("content");
 
     Marker marker = new Marker(lat, lng, content);
-    storeMarker(marker);
+    storeLocation(marker);
   }
 
-  /** Fetches markers from Datastore. */
+  /** Fetches Markers from Datastore. */
   private Collection<Marker> getMarkers() {
     Collection<Marker> markers = new ArrayList<>();
 
@@ -76,15 +77,16 @@ public class MarkerServlet extends HttpServlet {
     }
     return markers;
   }
+  
 
-  /** Stores a marker in Datastore. */
-  public void storeMarker(Marker marker) {
-    Entity markerEntity = new Entity("Marker");
-    markerEntity.setProperty("lat", marker.getLat());
-    markerEntity.setProperty("lng", marker.getLng());
-    markerEntity.setProperty("content", marker.getContent());
+  /** Stores a Location in Datastore. */
+  public void storeLocation(Marker marker) {
+    Entity MarkerEntity = new Entity("Marker");
+    MarkerEntity.setProperty("lat", marker.getLat());
+    MarkerEntity.setProperty("lng", marker.getLng());
+    MarkerEntity.setProperty("content", marker.getContent());
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(markerEntity);
+    datastore.put(MarkerEntity);
   }
 }

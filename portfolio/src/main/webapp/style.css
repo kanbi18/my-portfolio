@@ -128,7 +128,7 @@ a {
   word-wrap: normal;
 }
 
-#resume-button{
+.resume-button{
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
@@ -141,4 +141,42 @@ a {
 .container span, button{
   font-style: Helvetica, Arial;
   font-size: 20px;
+}
+
+
+/* stylesheet for recommendations.html */
+
+#recommendation-container {
+  max-width: 1000px;
+  height: 100%;
+  padding: 20%;
+  border: 2px solid #c3c3c3;
+  position: absolute;
+  margin: auto;
+  width: 70%;
+  border-radius: 3px;
+}
+
+#recommendation{
+  align-content: center;
+}
+
+#range {
+  float: left;
+}
+
+#new-button {
+  float: right;
+}
+
+#refresh ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  list-style-image: url(images/book.jpeg);
+}
+
+#all-images li{
+  display: block;
+  padding: 5px;
 }

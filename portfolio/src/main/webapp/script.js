@@ -93,21 +93,12 @@ function resume(){
 
 // script for recommendations.html
 
-function getRecommendedBook(){
-    var range = document.getElementById("range").value;
-    var url = (`/data/?range=${range}`);
-    fetch(url).then(response => response.json()).then((book) => {
-        console.log("Yktv");
-        const foodList = document.getElementById("book-container");
-        foodList.innerText="";
-        foodList.appendChild(createList("Title: " + book[0]));
-        foodList.appendChild(createList("Author: "  + book[1]));
-        foodList.appendChild(createList("Upvotes: " + book[2]));
-        foodList.appendChild(createList("Downvotes: " + book[3]));
-    })
-}
+function recommendation() {
+  alert("This page is your way to give to me and others!");
+};
 
-function createList(text){
+
+function createBookList(text){
     const liElement = document.createElement("li");
     liElement.innerText = text;
     return liElement;
@@ -115,12 +106,15 @@ function createList(text){
 
 /** Shows the user the books in the datastore recommended by other users. */
 function getNewBooks(){
-    fetch("/data").then(response => response.json()).then((books) => {
+    const range = document.getElementById("range").value;
+    const url = (`/data/?range=${range}`);
+    fetch(url).then(response => response.json()).then((books) => {
     console.log(books);
     const bookList = document.getElementById("new-recommendations");
     bookList.innerText = "";
     for(i = 0; i < books.length; i++){
-        bookList.appendChild(createList(books[i]["title"] + " by " + books[i]["author"]));
+        bookList.appendChild(createBookList(books[i]["title"] + " by " + books[i]["author"]));
+
     }
   })
 }
@@ -130,14 +124,35 @@ function deleteNulls(){
     fetch("/delete-data", {method: 'POST'});  
 }
 
+// Scripts for the blobstore API 
 
-/** Creates a map and adds it to the page. */
-var map;
+function fetchBlobstoreUrl() {
+  fetch('/blobstore')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('image-form');
+        messageForm.action = imageUploadUrl;
+      });
+}
 
-function createMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-        });
+
+function createImageList(source) {
+    const imgElement = document.createElement("img");
+    imgElement.src = source;
+    return imgElement;
+}
+
+/** Shows the user the images in the datastore recommended by other users. */
+function getAllImages() {
+    fetch("/image").then(response => response.json()).then((images) => {
+    console.log(images);
+    const imageList = document.getElementById("all-images");
+    imageList.innerText = "";
+    for(i = 0; i < images.length; i++){
+        imageList.appendChild(createImageList(images[i]["uploadUrl"]));
+    }
+  })
 }
 

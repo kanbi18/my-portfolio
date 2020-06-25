@@ -12,14 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-function fetchBlobstoreUrlAndShowForm() {
-  fetch('/blobstore-upload-url')
-      .then((response) => {
-        return response.text();
-      })
-      .then((imageUploadUrl) => {
-        const messageForm = document.getElementById('my-form');
-        messageForm.action = imageUploadUrl;
-        messageForm.classList.remove("hidden");
-      });
+package com.google.sps.data;
+
+/** Represents an image on the map. */
+public class Image {
+
+  private final String message;
+  private final String uploadUrl;
+
+  public Image(String message,String uploadUrl) {
+    this.message = message;
+    this.uploadUrl = uploadUrl;
+  }
+
+  public String getMessage() {
+    return message;
+  }
+
+  public String getUrl() {
+    return uploadUrl;
+  }
+
 }
