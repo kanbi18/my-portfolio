@@ -86,6 +86,7 @@ public final class FindMeetingQuery {
 
     ArrayList<TimeRange> incovenientTimeRanges = getIncovenientTimeRanges(events, request);
     int startOfPossibleTimes = TimeRange.START_OF_DAY;
+    int endOfPossibleTimes = TimeRange.END_OF_DAY;
 
     for (TimeRange timerange : incovenientTimeRanges) {
       int startOfTimeRange = timerange.start();
@@ -100,7 +101,6 @@ public final class FindMeetingQuery {
       startOfPossibleTimes = timerange.end();
     }
    
-    int endOfPossibleTimes = TimeRange.END_OF_DAY;
    
     if (startOfPossibleTimes + duration <= endOfPossibleTimes) {
       availableTimeRanges.add(TimeRange.fromStartEnd(startOfPossibleTimes, endOfPossibleTimes, true));
