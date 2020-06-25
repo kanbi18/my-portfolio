@@ -34,6 +34,7 @@ import org.jsoup.safety.Whitelist;
 /** Handles fetching and saving Locations data. */
 @WebServlet("/location")
 public class MapsServlet extends HttpServlet {
+// TODO: A GET request to "/location" will be added in the HTML/javascript in the future. Could be used in capstone
 
   /** Responds with a JSON array containing Location data. */
   @Override
@@ -76,6 +77,7 @@ public class MapsServlet extends HttpServlet {
     }
     return markers;
   }
+  
 
   /** Stores a Location in Datastore. */
   public void storeLocation(Marker marker) {
