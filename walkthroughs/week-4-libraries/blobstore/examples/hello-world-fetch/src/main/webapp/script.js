@@ -20,6 +20,6 @@ function fetchBlobstoreUrlAndShowForm() {
       .then((imageUploadUrl) => {
         const messageForm = document.getElementById('my-form');
         messageForm.action = imageUploadUrl;
-        messageForm.classList.remove('hidden');
+        messageForm.classList.remove("hidden");
       });
 }

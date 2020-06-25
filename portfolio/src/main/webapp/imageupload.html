@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Image Uploads</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body onload="fetchBlobstoreUrl()">
+      <nav id="my-nav">
+        <ul>
+          <li style="float:left"><a href="/index.html">Home</a></li>
+          <li style="float:right">
+            <button onclick="recommendation()" id="resume-button">User Activity</button>
+          </li>
+        </ul>
+      </nav>
+
+      <br><br>
+
+    <div id="recommendation-container">
+      <div id="recommendation">
+
+      <div id="image-container">
+        <h1>Image Uploads!</h1>
+        <form id="image-form" method="POST" enctype="multipart/form-data">
+          <p>Type some text:</p>
+          <textarea name="message"></textarea>
+            <br/>
+          <p>Upload an image:</p>
+          <input type="file" name="image">
+          <br/><br/>
+          <button>Submit</button>
+        </form>
+        <br/><br/>
+        <button onclick="getAllImages()">Look at the images</button>
+        <ul id="all-images"></ul>
+
+      </div> 
+
+      </div>   
+
+    </div>
+  </body>
+</html>

@@ -11,47 +11,42 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
- 
+
 package com.google.sps.servlets;
- 
+
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import java.io.IOException;
-import com.google.sps.data.Book;
-import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.Collection;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.SortDirection;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
+import com.google.sps.data.Image;
 import com.google.gson.Gson;
 
 
-/** Servlet that deletes book data no longer in use*/
-@WebServlet("/delete-data")
-public final class DeleteDataServlet extends HttpServlet {
+
+/**
+ * When the fetch() function requests the /blobstore-upload-url URL, the content of the response is
+ * the URL that allows a user to upload a file to Blobstore. If this sounds confusing, try running a
+ * dev server and navigating to /blobstore-upload-url to see the Blobstore URL.
+ */
+@WebServlet("/blobstore")
+public class BlobstoreServlet extends HttpServlet {
 
   @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+    String uploadUrl = blobstoreService.createUploadUrl("/blobstore-handler");
 
-    Query query = new Query("Book");
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    PreparedQuery results = datastore.prepare(query);
-
-    for (Entity entity : results.asIterable()) {
-        String book_title = (String) entity.getProperty("title");
-        String author = (String) entity.getProperty("author");
-        if(book_title == null || author == null){
-            Key bookEntityKey = KeyFactory.createKey("Book", book_title);
-            datastore.delete(bookEntityKey);
-        }
-    }
+    response.setContentType("text/html");
+    response.getWriter().println(uploadUrl);
   }
 }
-
-

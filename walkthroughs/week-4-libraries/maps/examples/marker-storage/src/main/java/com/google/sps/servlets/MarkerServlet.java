@@ -32,7 +32,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
 /** Handles fetching and saving markers data. */
-@WebServlet("/markers")
+@WebServlet("/marker")
 public class MarkerServlet extends HttpServlet {
 
   /** Responds with a JSON array containing marker data. */

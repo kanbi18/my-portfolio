@@ -5,6 +5,10 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <title>Locations</title>
+<<<<<<< HEAD
+    <link rel="stylesheet" href="locationstyles.css">
+    <script src="locationscript.js"></script>
+=======
     <style>
       #map {
         height: 100%;
@@ -16,11 +20,38 @@
       }
     </style>
     <script src="script.js"></script>
+>>>>>>> master
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS6d2psjPuDlfemnfQogqTElzhMadf3vU&callback=createMap"
     async defer></script>
   </head>
   <body onload="createMap()">
+<<<<<<< HEAD
+      <div id="content">
+        <nav id="my-nav">
+          <ul>
+            <li style="float:left"><a href="/index.html">Home</a></li>
+            <li style="float:right">
+              <button onclick="pageInfo()" id="resume-button">My Tour</button>
+            </li>
+          </ul>
+        </nav>
+        <br><br>
+        <h1>....I'm open to your recommendations</h1>
+        <h2>Click on the map to show me</h2>
+          <form action="/location" method="POST" id="book-form" autocomplete="off">
+            <label for="lat">Latitude:</label>  
+            <input type="text" id="content" name="lat" placeholder="Latitude">
+            <label for="lng">Longitude:</label>  
+            <input type="text" id="content" name="lng" placeholder="Longitude">
+            <label for="content">Content:</label>  
+            <input type="text" id="content" name="content" placeholder="Text">
+            <input type="submit" value="Submit"> 
+          </form>
+          <br><br><br>
+      </div>
+=======
     <h1>On the markers are the places on my bucket list.....</h1>
+>>>>>>> master
     <div id="map"></div>
   </body>
 </html>

@@ -162,6 +162,7 @@ a {
 #recommendation{
   align-content: center;
 }
+
 #range {
   float: left;
 }
@@ -175,4 +176,9 @@ a {
   margin: 0;
   padding: 0;
   list-style-image: url(images/book.jpeg);
+}
+
+#all-images li{
+  display: block;
+  padding: 5px;
 }

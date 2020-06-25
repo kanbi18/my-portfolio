@@ -12,16 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.sps;
+package com.google.sps.data;
 
-/**
- * Utility class for creating greeting messages.
- */
-public class Greeter {
-  /**
-   * Returns a greeting for the given name.
-   */
-  public String greet(String name) {
-    return "Hello " + name.trim();
+/** Represents a marker on the map. */
+public class Marker {
+
+  private final double lat;
+  private final double lng;
+  private final String content;
+
+  public Marker(double lat, double lng, String content) {
+    this.lat = lat;
+    this.lng = lng;
+    this.content = content;
+  }
+
+  public double getLat() {
+    return lat;
+  }
+
+  public double getLng() {
+    return lng;
+  }
+
+  public String getContent() {
+    return content;
   }
 }

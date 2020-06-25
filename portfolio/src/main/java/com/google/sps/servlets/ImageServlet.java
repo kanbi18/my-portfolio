@@ -1,0 +1,73 @@
+// Copyright 2019 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package com.google.sps.servlets;
+
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import java.io.IOException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.Collection;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.sps.data.Image;
+import com.google.gson.Gson;
+
+
+
+/**
+ * When the fetch() function requests the /blobstore-upload-url URL, the content of the response is
+ * the URL that allows a user to upload a file to Blobstore. If this sounds confusing, try running a
+ * dev server and navigating to /blobstore-upload-url to see the Blobstore URL.
+ */
+@WebServlet("/image")
+public class ImageServlet extends HttpServlet {
+
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+
+    Collection<Image> images = getImages();
+    Gson gson = new Gson();
+    String json = gson.toJson(images);
+
+    response.setContentType("application/json");
+    response.getWriter().println(json);
+  }
+
+  /** Fetches Images from Datastore. */
+  private Collection<Image> getImages() {
+    Collection<Image> images = new ArrayList<>();
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    Query query = new Query("Image");
+    PreparedQuery results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      String uploadUrl = (String) entity.getProperty("url");
+      String message = (String) entity.getProperty("message");
+
+      Image image = new Image(message, uploadUrl);
+      images.add(image);
+    }
+    return images;
+  }
+}

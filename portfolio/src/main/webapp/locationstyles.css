@@ -1,0 +1,55 @@
+#map {
+  height: 100%;
+}
+
+#content{
+  background: url("../images/wall.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#resume-button{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;  
+  padding: 20px;
+  font-size: 30px;
+  font-style: Helvetica;
+}
+
+#my-nav{
+  background-color: #333333;
+  color: white;
+  position: sticky;
+  opacity: 0.9;
+  top: 0;
+  border-bottom: solid 4px violet;
+}
+
+#my-nav ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  overflow: hidden;
+}
+ 
+#my-nav li{
+  display: inline;
+  padding: 20px;
+  font-size: 30px;
+}
+ 
+#my-nav a {
+  text-align: center;
+  font-style: "Open Sans Condensed"; 
+}
+
+h1 {
+  font-family: Helvetica, Arial, sans-serif;
+}
