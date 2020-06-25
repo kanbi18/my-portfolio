@@ -32,13 +32,13 @@ public final class FindMeetingQuery {
   }
 
   // returns what events have attendees going to the requested event
-  public ArrayList<Event> checkMatchingAttendees(Collection<Event> events, MeetingRequest request) {
+  public ArrayList<Event> getEventsWithMatchingAttendees(Collection<Event> events, MeetingRequest request) {
     Collection<String> requestAttendees = request.getAttendees();
     ArrayList<Event> eventsWithMatchingAttendees = new ArrayList<Event>();
     
     for (String attendee : requestAttendees) {
       for (Event event : events) {
-        ArrayList<String> eventAttendees = new ArrayList<String>(event.getAttendees());
+        ArrayList<String> eventAttendees = event.getAttendees();
         if (eventAttendees.contains(attendee)) {
           eventsWithMatchingAttendees.add(event);
         }
@@ -48,34 +48,18 @@ public final class FindMeetingQuery {
     return eventsWithMatchingAttendees;
   }
 
-//   public ArrayList<TimeRange> getincovenientTimeRangesSorted(Collection<Event> events) {
-//     ArrayList<TimeRange> incovenientTimeRanges = new ArrayList<TimeRange>();
-
-//     for (Event event : events) {
-//       incovenientTimeRanges.add(event.getWhen());    
-//     }
-
-//     Collections.sort(incovenientTimeRanges, TimeRange.ORDER_BY_START);
-//     return incovenientTimeRanges;
-//   }
-
-  private ArrayList<TimeRange> getIncovenientTimeRanges(Collection<Event> events, Collection<String> requestAttendees) {
+  private ArrayList<TimeRange> getIncovenientTimeRanges(Collection<Event> events, Collection<String> requestAttendees, MeetingRequest request) {
     HashSet<String> requestAttendeesSet = new HashSet<String>();
 
     for (String attendee : requestAttendees) {
       requestAttendeesSet.add(attendee);
     }
-
+    
+    ArrayList<Event> matchingEvents = getEventsWithMatchingAttendees(events, request);
     ArrayList<TimeRange> incovenientTimeRanges = new ArrayList<TimeRange>();
-    for (Event event : events) {
-      Collection<String> eventAttendees = event.getAttendees();
-      TimeRange eventTimeRange = event.getWhen();
-      for (String attendee : eventAttendees) {
-        if (eventAttendees.contains(attendee)) {
-          incovenientTimeRanges.add(eventTimeRange);
-        }      
-      }
-    }
+    for (Event event : matchingEvents) {
+      incovenientTimeRanges.add(event.getWhen());
+    }      
 
     Collections.sort(incovenientTimeRanges, TimeRange.ORDER_BY_START);
     return incovenientTimeRanges;
@@ -86,10 +70,8 @@ public final class FindMeetingQuery {
     
     ArrayList<TimeRange> availableTimeRanges = new ArrayList<TimeRange>();
     // possible timespot meetings can start
-    int startOfPossibleTimes = TimeRange.START_OF_DAY;
-    int endOfPossibleTimes = TimeRange.END_OF_DAY;
     Collection<String> attendees = request.getAttendees();
-    ArrayList<Event> eventsWithMatchingAttendees = checkMatchingAttendees(events, request);
+    ArrayList<Event> eventsWithMatchingAttendees = getEventsWithMatchingAttendees(events, request);
 
 
     // test cases check
@@ -97,23 +79,13 @@ public final class FindMeetingQuery {
       return availableTimeRanges;
     }
     
-    if (eventsWithMatchingAttendees.isEmpty()){
+   if (eventsWithMatchingAttendees.isEmpty() || attendees.isEmpty() || events.isEmpty()) {
       availableTimeRanges.add(TimeRange.WHOLE_DAY);
-      return availableTimeRanges;
+      return availabileTimeRanges;
     }
 
-    if (attendees.isEmpty()) {
-      availableTimeRanges.add(TimeRange.WHOLE_DAY);
-      return availableTimeRanges;
-    }
-
-    if (events.isEmpty()) {
-      availableTimeRanges.add(TimeRange.WHOLE_DAY);
-      return availableTimeRanges;
-    }
-
-    ArrayList<TimeRange> incovenientTimeRanges = getIncovenientTimeRanges(events, request.getAttendees());
-
+    ArrayList<TimeRange> incovenientTimeRanges = getIncovenientTimeRanges(events, request);
+    int startOfPossibleTimes = TimeRange.START_OF_DAY;
 
     for (TimeRange timerange : incovenientTimeRanges) {
       int startOfTimeRange = timerange.start();
@@ -127,7 +99,9 @@ public final class FindMeetingQuery {
       }
       startOfPossibleTimes = timerange.end();
     }
-
+   
+    int endOfPossibleTimes = TimeRange.END_OF_DAY;
+   
     if (startOfPossibleTimes + duration <= endOfPossibleTimes) {
       availableTimeRanges.add(TimeRange.fromStartEnd(startOfPossibleTimes, endOfPossibleTimes, true));
     } 
