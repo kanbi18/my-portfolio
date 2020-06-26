@@ -38,21 +38,6 @@ function sayRandomBook(){
  * Gives the user a random book recommendation.
  */
 
- 
-function sayRandomBook(){
-    const books = [
-        "Jane Eyre", "1984","Don Quixote", "The Great Gatsby", "Harry Potter and the Philosopher's Stone",
-        "War and Peace", "The Alchemist", "The Lord of the Rings", "Things Fall Apart", "Lord of the Flies", "Animal Farm",
-        "The Lion, The Witch, and the Wardrobe","Percy Jackson and the Lightning Thief", "Honor among thieves", "Summer Nights at the Midnight Hotel", "It", "The Hound of the Baskervilles",
-    ];
- 
-    const chosenBook= books[Math.floor(Math.random() * books.length)];
- 
-    const bookContainer = document.getElementById("book-container");
-    bookContainer.innerHTML = chosenBook;
- 
-}
-
 /**
  * Adds a new project name, info and picture everytime the equivalent button is clicked.
  */
@@ -62,21 +47,21 @@ const projects = ["This was my first ever python project. I used file handling a
  "Game development is one of my stronger interests. So before I had learnt any OOLs, I used python to create the game: Draughts. Using the turtle module, I made the graphical representation of the board for the players to access. ", 
  "With the use of R, I worked with a partner and a manager to analyze various 2020 United States presidential debates with the aim of tying emotion to the particular sections of the speech from the information mined."];
 
-function first(){
+function first() {
   document.getElementById("project").innerHTML = projects[0];
   document.getElementById("project-name").innerHTML = "Login System";
   image = document.getElementById("project-image");
   image.src = "/images/lock.jpg";
 }
 
-function second(){
+function second() {
   document.getElementById("project").innerHTML = projects[1];
   document.getElementById("project-name").innerHTML = "Draughts";
   image = document.getElementById("project-image");
   image.src = "/images/board.jpg";
 }
 
-function third(){
+function third() {
   document.getElementById("project").innerHTML = projects[2];
   document.getElementById("project-name").innerHTML = "Sentiment Analysis";
   image = document.getElementById("project-image");
@@ -87,7 +72,7 @@ function third(){
  * Alerting user of resume information
  */
 
-function resume(){
+function resume() {
   alert("Coming Soon...Check out my LinkedIn profile for now");
 };
 
@@ -120,7 +105,7 @@ function getNewBooks(){
 }
 
 /** Deletes the nulls in the datastore in the case that there happens to be any */
-function deleteNulls(){
+function deleteNulls() {
     fetch("/delete-data", {method: 'POST'});  
 }
 
@@ -150,9 +135,45 @@ function getAllImages() {
     console.log(images);
     const imageList = document.getElementById("all-images");
     imageList.innerText = "";
-    for(i = 0; i < images.length; i++){
+    for (i = 0; i < images.length; i++) {
         imageList.appendChild(createImageList(images[i]["uploadUrl"]));
     }
   })
 }
 
+/** Creates a map and adds it to the page. */
+var map;
+
+function createMap() {
+  eiffelTower = {lat: 48.858520, lng: 2.294441};
+  burjKhalifa = {lat: 25.197255, lng: 55.274527};
+  cristoRedentor = {lat: -22.950829, lng: -43.210745};
+  nouvelleCalédonie = {lat: -21.309019, lng: 165.357732};
+
+  const map = new google.maps.Map(document.getElementById('map'),
+      {center: eiffelTower, zoom: 10});
+
+  const centerMarker = new google.maps.Marker({
+    position: eiffelTower,
+    map: map,
+    title: "Mon centre du monde"
+  });
+
+  const wonderOne = new google.maps.Marker({
+    position: burjKhalifa,
+    map: map,
+    title: 'Tallest Building on Earth'
+  });
+
+  const wonderTwo = new google.maps.Marker({
+    position: cristoRedentor,
+    map: map,
+    title: 'Cristo Redentor'
+  });
+
+  const wonderThree = new google.maps.Marker({
+    position: nouvelleCalédonie,
+    map: map,
+    title: 'La Nouvelle-Calédonie'
+  });
+}
