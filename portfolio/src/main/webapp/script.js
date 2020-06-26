@@ -11,16 +11,13 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
-
-// script for index.html
-
+ 
 /**
  * Gives the user a random book recommendation.
  */
 
  
-function sayRandomBook() {
+function sayRandomBook(){
     const books = [
         "Jane Eyre", "1984","Don Quixote", "The Great Gatsby", "Harry Potter and the Philosopher's Stone",
         "War and Peace", "The Alchemist", "The Lord of the Rings", "Things Fall Apart", "Lord of the Flies", "Animal Farm",
@@ -30,9 +27,16 @@ function sayRandomBook() {
     const chosenBook= books[Math.floor(Math.random() * books.length)];
  
     const bookContainer = document.getElementById("book-container");
-    bookContainer.innerHTML = chosenBook;
+    bookContainer.innerHTML = chosenbook;
  
 }
+
+
+// script for index.html
+
+/**
+ * Gives the user a random book recommendation.
+ */
 
 /**
  * Adds a new project name, info and picture everytime the equivalent button is clicked.
@@ -79,20 +83,23 @@ function recommendation() {
 };
 
 
-function createBookList(text) {
+function createBookList(text){
     const liElement = document.createElement("li");
     liElement.innerText = text;
     return liElement;
 }
 
 /** Shows the user the books in the datastore recommended by other users. */
-function getNewBooks() {
-    fetch("/data").then(response => response.json()).then((books) => {
+function getNewBooks(){
+    const range = document.getElementById("range").value;
+    const url = (`/data/?range=${range}`);
+    fetch(url).then(response => response.json()).then((books) => {
     console.log(books);
     const bookList = document.getElementById("new-recommendations");
     bookList.innerText = "";
     for(i = 0; i < books.length; i++){
         bookList.appendChild(createBookList(books[i]["title"] + " by " + books[i]["author"]));
+
     }
   })
 }
@@ -102,7 +109,6 @@ function deleteNulls() {
     fetch("/delete-data", {method: 'POST'});  
 }
 
-<<<<<<< HEAD
 // Scripts for the blobstore API 
 
 function fetchBlobstoreUrl() {
@@ -135,7 +141,6 @@ function getAllImages() {
   })
 }
 
-=======
 /** Creates a map and adds it to the page. */
 var map;
 
@@ -172,4 +177,3 @@ function createMap() {
     title: 'La Nouvelle-Calédonie'
   });
 }
->>>>>>> master

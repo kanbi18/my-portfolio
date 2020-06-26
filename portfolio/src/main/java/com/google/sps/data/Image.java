@@ -14,7 +14,7 @@
 
 package com.google.sps.data;
 
-/** Represents a marker on the map. */
+/** Represents an image on the map. */
 public class Image {
 
   private final String message;

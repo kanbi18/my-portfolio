@@ -4,9 +4,6 @@ function pageInfo() {
   alert("This page includes places on my bucket list! And....");
 };
 
-/* Editable marker that displays when a user clicks in the map. */
-let editMarker;
-
 /** Creates a map and adds it to the page. */
 var map;
 
